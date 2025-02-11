@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>Criatura Creada</h1>
+    <p><strong>Nombre:</strong> {{ creature.nombre }}</p>
+    <p><strong>Tipo:</strong> {{ creature.tipo }}</p>
+    <p><strong>Habilidad Especial:</strong> {{ creature.habilidad_especial }}</p>
+    <p><strong>Estadísticas:</strong></p>
+    <ul>
+        <li>Ataque: {{ creature.estadisticas.ataque }}</li>
+        <li>Defensa: {{ creature.estadisticas.defensa }}</li>
+        <li>Velocidad: {{ creature.estadisticas.velocidad }}</li>
+    </ul>
+    <a href="/generate/">Generar otra criatura</a>
+</body>
+</html>

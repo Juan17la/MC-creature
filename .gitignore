@@ -1,0 +1,14 @@
+# Ignorar archivos grandes
+*.mp4
+*.mov
+*.avi
+
+# Ignorar carpetas innecesarias
+node_modules/
+dist/
+build/
+.env
+
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db

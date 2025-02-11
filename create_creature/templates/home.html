@@ -1,0 +1,29 @@
+{% extends 'layouts/background.html'%}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/Minecrafter-MA3Dw.ttf' %}">
+    <link rel="stylesheet" href="{% static 'fonts/MinecraftRegular-Bmg3.otf' %}">
+</head>
+<body>
+
+    <div class="title">
+        <h1>Welcome</h1>
+        <h1>Minecraft Cards Generator</h1>
+    </div>
+    
+    <ul class="container">
+        <li class="nav-link"><a href="/generate/">Generate</a></li>
+        <li class="nav-link"><a href="">Collections</a></li>
+        <li class="nav-link"><a href="">Sing In</a></li>
+        <li class="nav-link"><a href="">Sing Up</a></li>
+    </ul>
+
+</body>
+</html>
+{% endblock %}

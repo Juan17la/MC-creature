@@ -1,0 +1,15 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <video src="{% static 'videos/background02.mp4' %}" class="background_video" autoplay muted loop></video>
+</body>
+</html>
+{% block content %}
+{% endblock %}
