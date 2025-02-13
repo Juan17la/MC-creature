@@ -1,0 +1,106 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'abc2';
+}
+
+main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 25px 25px rgb(0, 0, 0, 0.7);
+}
+
+main::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url(img/bg_body.jpg);
+    width: 100%;
+    height: 100%;
+    filter: blur(2.5px);
+}
+
+.container{
+    display: flex;
+    justify-content: space-around   ;
+    align-items: center;
+    flex-direction: column;
+    background: #3d3938;
+    box-shadow: inset 0 0 0 4px #646160,
+                inset 0 0 25px 10px rgba(0, 0, 0, 0.149),
+                0 0 35px 15px rgba(0, 0, 0, 0.7);
+    width: 500px;
+    height: 350px;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+}
+
+.container-form{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-minecraft {
+    display: flex;
+    width: 300px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 4px solid #7a7a7a;
+    background: #3f3f3f;
+
+    color: white;
+    font-family: 'abc2';
+    font-size: 16px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 10px;
+    width: 300px;
+    height: 40px;
+
+    color: white;
+    font-family: 'abc2';
+
+    border: solid 2px #262423;
+    background-color: #367723;
+    box-shadow: inset 0 5px 0 #52a535,
+                inset 0 -5px 0 #2a641c;
+}
+
+button:hover {
+    background: #30691e;
+}
+
+label {
+    font-size: 24px; /* Tamaño más grande */
+    color: #ffcc00; /* Color llamativo */
+    font-weight: bold; /* Texto en negrita */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para mejor visibilidad */
+    display: block; /* Asegura que esté encima del input */
+    text-align: center;
+    margin-bottom: 10px;
+}

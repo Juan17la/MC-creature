@@ -1,15 +1,30 @@
+{% extends 'layouts/navbar.html'%}
+{% load static %}
+
+{% block content%}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'generate.css' %}">
+    <title>Generate</title>
 </head>
 <body>
-    <h1>Generar Criatura</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Generar</button>
-    </form>
+    <main>        
+
+        <div class="container">
+            <form method="post">
+                <div class="container-form">
+                    {% csrf_token %}
+                    <label for="{{ form.name.id_for_label }}" class="custom-label">Nombre de la Criatura:</label>
+                    {{ form.name }}    
+                </div>
+                <button type="submit">Generate</button>
+            </form>
+        </div>
+       
+    </main>   
 </body>
 </html>
+{% endblock %}

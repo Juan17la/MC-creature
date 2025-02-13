@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCreature</title>
+    <link rel="stylesheet" href="{% static 'fonts/Minecrafter-MA3Dw.ttf' %}">
+    <link rel="stylesheet" href="{% static 'fonts/MinecraftRegular-Bmg3.otf' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'navbar.css' %}">
+</head>
+<body>
+
+    <nav>
+        <div class="container-title">
+            <h1>MCreature</h1>
+        </div>
+
+        <ul class="container-links">
+            <li class="link-nav"><a href="/">Home</a></li>
+            <li class="link-nav"><a href="">Generate</a></li>
+            <li class="link-nav"><a href="">Collection</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

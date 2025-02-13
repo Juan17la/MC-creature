@@ -76,5 +76,6 @@ body{
 }
 
 .nav-link a:hover{
+    transition: color 0.2s;
     color: darkgoldenrod;
 }
