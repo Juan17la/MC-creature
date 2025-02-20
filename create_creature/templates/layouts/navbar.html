@@ -19,8 +19,14 @@
 
         <ul class="container-links">
             <li class="link-nav"><a href="/">Home</a></li>
-            <li class="link-nav"><a href="">Generate</a></li>
-            <li class="link-nav"><a href="">Collection</a></li>
+            <li class="link-nav"><a href="/generate">Generate</a></li>
+            <li class="link-nav"><a href="/collection">Collection</a></li> 
+            {% if user.is_authenticated %}
+            <li class="link-nav"><a href="/singout">Logout</a></li>
+            {% else %}
+            <li class="link-nav"><a href="/singup">Sing Up</a></li>
+            <li class="link-nav"><a href="/singin">Sing In</a></li>
+            {% endif %}
         </ul>
     </nav>
 

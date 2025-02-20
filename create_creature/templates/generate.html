@@ -2,29 +2,22 @@
 {% load static %}
 
 {% block content%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'generate.css' %}">
-    <title>Generate</title>
-</head>
-<body>
-    <main>        
+<link rel="stylesheet" href="{% static 'fonts/Minecrafter-MA3Dw.ttf' %}">
+<link rel="stylesheet" href="{% static 'fonts/MinecraftRegular-Bmg3.otf' %}">
+<link rel="stylesheet" href="{% static 'generate.css' %}">
+<title>Generate</title>
+<main>        
 
-        <div class="container">
-            <form method="post">
-                <div class="container-form">
-                    {% csrf_token %}
-                    <label for="{{ form.name.id_for_label }}" class="custom-label">Nombre de la Criatura:</label>
-                    {{ form.name }}    
-                </div>
-                <button type="submit">Generate</button>
-            </form>
-        </div>
-       
-    </main>   
-</body>
-</html>
+    <div class="container">
+        <form method="post">
+            <div class="container-form">
+                {% csrf_token %}
+                <label for="{{ form.name.id_for_label }}" class="custom-label">Nombre de la Criatura:</label>
+                {{ form.name }}    
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+    
+</main>
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layouts/navbar.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'singin.css' %}">
+</head>
+<main>
+    <div class="container-login-form">
+
+        <form action="/singin/" method="post">
+            <h1>Sing Up</h1>
+            
+            {% csrf_token %}
+            {{ formAuth }}
+
+            <button>Log In</button>
+            {{ error }}
+
+        </form>
+    </div>
+</main>
+{% endblock %}

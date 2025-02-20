@@ -2,60 +2,50 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'creature_created.css' %}">
-</head>
-<body>
-    <main>
-        <div class="card-container">
-            <canvas>
+<link rel="stylesheet" href="{% static 'fonts/Minecrafter-MA3Dw.ttf' %}">
+<link rel="stylesheet" href="{% static 'fonts/MinecraftRegular-Bmg3.otf' %}">
+<link rel="stylesheet" href="{% static 'creature_created.css' %}">
+
+<main>
+    <div class="card-container">
+    </div>
     
-            </canvas>
-        </div>
-        <div class="stats-card-info">
-            <article class="name">
-                <h1>Name: {{creature.name}}</h1>
-                <h1>Race: {{creature.race.name}}</h1>
-            </article>
-            <article class="stats">
-                <ul class="list-stats">
-                    <li class="stat"><h3>Attack: {{creature.stats.attack}}</h3></li>
-                    <li class="stat"><h3>Defense: {{creature.stats.defense}}</h3></li>
-                    <li class="stat"><h3>Resistance: {{creature.stats.resistance}}</h3></li>
-                    <li class="stat"><h3>Speed: {{creature.stats.speed}}</h3></li>
-                    <li class="stat"><h3>Health: {{creature.stats.hp}}</h3></li>
-                </ul>
-            </article>
-            <article class="eskill">
-                <h2>{{creature.special_ability.name}}</h2>
-                <ul class="info-special-ability">
-                    <li class="info-ability">
-                        <h3>Ability Race: {{creature.special_ability.race.name}}</h3>
-                    </li>
-                    <li class="info-ability">
-                        <p>Description: Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, ex.</p>
-                    </li>
-                    <li class="info-ability">
-                        <h3>Power Level: {{creature.special_ability.level_power}}</h3>
-                    </li>
-                </ul>
-            </article>
-            <article class="weapons"></article>
-            <article class="armor"></article>
-            <article class="sth"></article>
-        </div>
-    </main>
-</body>
+    <div class="stats-card-info">
+        <article class="name">
+            <h1>Name: {{ creature.name }}</h1>
+            <h1>Race: {{ creature.race.name }}</h1>
+        </article>
 
-<!-- <script>
-    window.addEventListener('beforeunload', function (event){
-        event.preventDefault();
-        event.returnValue("Data would change when you reload this page. Be careful.")
-    })
-</script> -->
+        <article class="stats">
+            <ul class="list-stats">
+                <li class="stat"><h3>Attack: {{ creature.stats.attack }}</h3></li>
+                <li class="stat"><h3>Defense: {{ creature.stats.defense }}</h3></li>
+                <li class="stat"><h3>Resistance: {{ creature.stats.resistance }}</h3></li>
+                <li class="stat"><h3>Speed: {{ creature.stats.speed }}</h3></li>
+                <li class="stat"><h3>Health: {{ creature.stats.hp }}</h3></li>
+            </ul>
+        </article>
 
-</html>
+        <article class="eskill">
+            <h2>{{ creature.special_ability.name }}</h2>
+            <ul class="info-special-ability">
+                <li class="info-ability">
+                    <h3>Ability Race: {{ creature.special_ability.race.name }}</h3>
+                </li>
+                <li class="info-ability">
+                    <p>Description: Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, ex.</p>
+                </li>
+                <li class="info-ability">
+                    <h3>Power Level: {{ creature.special_ability.level_power }}</h3>
+                </li>
+            </ul>
+        </article>
+
+        <article class="weapons"></article>
+        <article class="armor"></article>
+        <article class="sth"></article>
+    </div>
+
+</main>
+
 {% endblock %}
