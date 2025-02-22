@@ -1,5 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
 from random import randint, choice
+
+class Collection(models.Model): 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Un usuario solo tiene una colección
+    creatures = models.ManyToManyField("Creature", blank=True)  # Relación con criaturas
+
+    def add_creature(self, creature):
+        self.creatures.add(creature)
+
+    def remove_creature(self, creature):
+        self.creatures.remove(creature)
+
 
 class Stats(models.Model): #------> LO HIZE BIEN :) SOLO NOMBRES INCORRECTOS
     attack = models.IntegerField()
@@ -41,18 +53,22 @@ class Creature(models.Model):
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
     special_ability = models.ForeignKey(SpecialAbility, on_delete=models.CASCADE)
     stats = models.ForeignKey(Stats, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     @classmethod
     def generateCreature(cls, name):
-        race_selected = Race.select_random_type()  # Ahora es una instancia de Race
-        if not race_selected:  # Verifica que haya razas en la BD
+        race_selected = Race.select_random_type()
+        if not race_selected:
             raise ValueError("No hay razas disponibles en la base de datos")
 
-        newCreature = cls(
+        ability = SpecialAbility.select_random_ability(race_selected)
+        if not ability:
+            ability = SpecialAbility.objects.create(name="Default Ability", level_power=1, race=race_selected)  # Habilidad por defecto
+
+        newCreature = cls.objects.create(
             name=name, 
-            race=race_selected,  # Ahora es una instancia correcta
-            special_ability=SpecialAbility.select_random_ability(race_selected),
+            race=race_selected,
+            special_ability=ability,
             stats=Stats.create_random_stats(),
         )
-        newCreature.save()
         return newCreature

@@ -1,3 +1,35 @@
 {% extends 'layouts/navbar.html' %}
+{% load static %}
 
-<h1>Collection</h1>
+{% block content %}
+<link rel="stylesheet" href="{% static 'collection.css' %}">
+<main>
+    <section class="nav-collection">
+        <input type="text" placeholder="Search...">
+
+        <ul>
+            <li><button>Delete</button></li>
+            <li><button>Update</button></li>
+            <li><button>Back</button></li>
+            <li><button>Next</button></li>
+        </ul>
+    </section> 
+    {% if user.is_authenticated %}
+    <section class="cards-content">
+        {% for creature in collection.creatures.all %}
+        <div class="card">
+            <img src="" alt="">
+            <div class="name">{{ creature.name }}</div>
+            <div class="race">{{ creature.race.name }}</div>
+        </div>
+        {% empty %}
+            <p>No creatures yet!</p>
+        {% endfor %}
+    </section>
+    {% else %}
+    <div class="warning">
+        <h1>Log In to create and save your cards!</h1>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

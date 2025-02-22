@@ -1,7 +1,7 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Creature
 
-class NameFormCreature(forms.Form):
-    name = forms.CharField(
-        label="Nombre de la Criatura",  # Cambia el texto del label
-        widget=forms.TextInput(attrs={'class': 'input-minecraft'}),
-    )
+class createCreature(ModelForm):
+    class Meta:
+        model = Creature
+        fields = ['name']

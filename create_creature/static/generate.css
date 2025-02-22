@@ -52,7 +52,7 @@ form{
     align-items: center;
 }
 
-.input-minecraft {
+input {
     display: flex;
     width: 300px;
 

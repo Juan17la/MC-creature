@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 
-from .forms import NameFormCreature
-from .models import Creature
+from .forms import createCreature
+from .models import Creature, Collection
 
 def home(request):
     return render(request, 'home.html', {
@@ -13,23 +13,38 @@ def home(request):
         'rHome' : 'home'
     })
 
+def collections(request):
+    user_collection = None
+    if request.user.is_authenticated:
+        user_collection, created = Collection.objects.get_or_create(user=request.user)
+
+    return render(request, 'collection.html', {
+        'collection': user_collection,
+    })
 
 def generate(request):
     if request.method == 'POST':
-        form = NameFormCreature(request.POST)
+        form = createCreature(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-
             newCreature = Creature.generateCreature(name)
 
-        return render(request, 'creature_created.html', {
-            'title': 'Creature Created',
-            'creature': newCreature,})
+            if request.user.is_authenticated:
+                collection, created = Collection.objects.get_or_create(user=request.user)
+                collection.add_creature(newCreature)
+                newCreature.user = request.user
+                newCreature.save()
+
+            return render(request, 'creature_created.html', {
+                'title': 'Creature Created',
+                'creature': newCreature,
+            })
+    
     else:
-        form = NameFormCreature() 
-        return render(request, 'generate.html', {
-            'form': form,
-            'title': 'Generate',})
+        form = createCreature() 
+        return render(request, 'generate.html', 
+                    {'form': form, 
+                    'title': 'Generate'})
 
 def singUp(request):
     if request.method == 'GET':
@@ -74,5 +89,3 @@ def singin(request):
             return redirect('collection')
 
 
-def collections(request):
-    return render(request, 'collection.html')
